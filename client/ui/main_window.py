@@ -293,6 +293,10 @@ class MainWindow(wx.Frame):
         self._misc1_hold_triggered = False
         self._east_press_time = None
         self._east_hold_triggered = False
+        self._west_press_time = None
+        self._west_hold_triggered = False
+        self._north_press_time = None
+        self._north_hold_triggered = False
         self._l3_is_down = False
         self._r3_is_down = False
         self._r3_modifier_used = False
@@ -394,6 +398,23 @@ class MainWindow(wx.Frame):
                     self.silence_speech()
                     self._send_keybind("q", has_control=True)
                     self.gamepad_manager.rumble(0.35, 0.35, 90)
+        if getattr(self, "_west_press_time", None) is not None:
+            if not getattr(self, "_west_hold_triggered", False) and (
+                time.monotonic() - self._west_press_time >= 0.5
+            ):
+                self._west_hold_triggered = True
+                self._cancel_pending_gamepad_action()
+                self.silence_speech()
+                self._send_keybind("s")
+                self.gamepad_manager.rumble(0.2, 0.2, 60)
+        if getattr(self, "_north_press_time", None) is not None:
+            if not getattr(self, "_north_hold_triggered", False) and (
+                time.monotonic() - self._north_press_time >= 0.5
+            ):
+                self._north_hold_triggered = True
+                self.silence_speech()
+                self._send_keybind("c")
+                self.gamepad_manager.rumble(0.2, 0.2, 60)
 
     def _on_gamepad_connected(self, controller_name: str):
         """Handle newly connected controller announcement and tactile welcome."""
@@ -708,6 +729,7 @@ class MainWindow(wx.Frame):
             self._south_is_down = True
             if getattr(self, "_west_is_down", False):
                 self._west_combo_used = True
+                self._west_press_time = None
                 self._cancel_pending_gamepad_action()
                 self.silence_speech()
                 self._send_keybind("b")
@@ -717,10 +739,13 @@ class MainWindow(wx.Frame):
             self._schedule_pending_gamepad_action("south", 0.075)
             return
 
-        elif btn_name == "west":  # Square / X -> Primary Game Action / Space (or Combo with South -> Add bot B)
+        elif btn_name == "west":  # Square / X -> Tap: Space / Hold: Scores (S) / Combo: Add bot (B)
             self._west_is_down = True
+            self._west_press_time = time.monotonic()
+            self._west_hold_triggered = False
             if getattr(self, "_south_is_down", False):
                 self._west_combo_used = True
+                self._west_press_time = None
                 self._cancel_pending_gamepad_action()
                 self.silence_speech()
                 self._send_keybind("b")
@@ -730,9 +755,9 @@ class MainWindow(wx.Frame):
             self._schedule_pending_gamepad_action("west", 0.075)
             return
 
-        elif btn_name == "north":  # Triangle / Y -> Turn / Table Status ("t")
-            self.silence_speech()
-            self._send_keybind("t")
+        elif btn_name == "north":  # Triangle / Y -> Tap: Game Info (I) / Hold: Check Color/State (C)
+            self._north_press_time = time.monotonic()
+            self._north_hold_triggered = False
 
         elif btn_name == "left_shoulder":  # L1 / LB -> Previous buffer
             self.silence_speech()
@@ -794,25 +819,45 @@ class MainWindow(wx.Frame):
             self.on_list_online_with_games(wx.CommandEvent())
             self.gamepad_manager.rumble(0.22, 0.22, 60)
 
-        elif btn_name == "touchpad_swipe_up":  # 1-finger Swipe Up -> Read online users (F2)
-            self.silence_speech()
-            self.on_list_online(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.15, 0.15, 50)
+        elif btn_name == "touchpad_swipe_up":
+            if getattr(self, "_r3_is_down", False):
+                self._r3_modifier_used = True
+                self.on_volume_up(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.12, 0.12, 40)
+            else:
+                self.silence_speech()
+                self.on_list_online(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.15, 0.15, 50)
 
-        elif btn_name == "touchpad_swipe_down":  # 1-finger Swipe Down -> Toggle spectator mode in table / F3
-            self.silence_speech()
-            self._send_keybind("f3")
-            self.gamepad_manager.rumble(0.15, 0.15, 45)
+        elif btn_name == "touchpad_swipe_down":
+            if getattr(self, "_r3_is_down", False):
+                self._r3_modifier_used = True
+                self.on_volume_down(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.12, 0.12, 40)
+            else:
+                self.silence_speech()
+                self._send_keybind("f3")
+                self.gamepad_manager.rumble(0.15, 0.15, 45)
 
-        elif btn_name == "touchpad_swipe_left":  # 1-finger Swipe Left -> F4: Toggle mute current buffer
-            self.silence_speech()
-            self.on_buffer_mute_toggle(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.15, 0.15, 45)
+        elif btn_name == "touchpad_swipe_left":
+            if getattr(self, "_r3_is_down", False):
+                self._r3_modifier_used = True
+                self.on_ambience_down(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.12, 0.12, 40)
+            else:
+                self.silence_speech()
+                self.on_buffer_mute_toggle(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.15, 0.15, 45)
 
-        elif btn_name == "touchpad_swipe_right":  # 1-finger Swipe Right -> F6: Toggle table chat mute
-            self.silence_speech()
-            self.on_toggle_table_chat(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.15, 0.15, 45)
+        elif btn_name == "touchpad_swipe_right":
+            if getattr(self, "_r3_is_down", False):
+                self._r3_modifier_used = True
+                self.on_ambience_up(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.12, 0.12, 40)
+            else:
+                self.silence_speech()
+                self.on_toggle_table_chat(wx.CommandEvent())
+                self.gamepad_manager.rumble(0.15, 0.15, 45)
 
         elif btn_name == "touchpad_tap":  # Soft tap -> Whose turn / Table status ("t")
             self.silence_speech()
@@ -845,10 +890,24 @@ class MainWindow(wx.Frame):
 
         elif btn_name == "west":
             self._west_is_down = False
+            held = getattr(self, "_west_hold_triggered", False)
+            self._west_press_time = None
+            self._west_hold_triggered = False
             if self._has_pending_gamepad_action("west"):
                 self._cancel_pending_gamepad_action()
-                if not getattr(self, "_west_combo_used", False):
+                if not getattr(self, "_west_combo_used", False) and not held:
                     self._execute_standalone_west()
+            elif not getattr(self, "_west_combo_used", False) and not held:
+                self._execute_standalone_west()
+
+        elif btn_name == "north":
+            held = getattr(self, "_north_hold_triggered", False)
+            self._north_press_time = None
+            self._north_hold_triggered = False
+            if not held:
+                self.silence_speech()
+                self._send_keybind("i")
+                self.gamepad_manager.rumble(0.12, 0.12, 35)
 
         elif btn_name == "east":
             if getattr(self, "_east_press_time", None) is not None:

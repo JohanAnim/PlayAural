@@ -57,8 +57,8 @@ O PlayAural é totalmente compatível com controles padrão no cliente de comput
 
 * **Botão Sul / Inferior (Cruz no PlayStation / A no Xbox / B no Switch / Botão 0 em genéricos):** Confirmar, ativar o item em foco ou jogar a carta/peça selecionada (equivalente ao Enter).
 * **Botão Leste / Direito (Círculo no PlayStation / B no Xbox / A no Switch / Botão 1 em genéricos):** Cancelar, voltar, fechar o menu atual ou abrir o menu de ações do jogo (equivalente ao Escape). Segurar pressionado dentro de uma mesa sai da mesa (Ctrl + Q).
-* **Botão Oeste / Esquerdo (Quadrado no PlayStation / X no Xbox / Y no Switch / Botão 2 em genéricos):** Ação principal ou Espaço. Executa a ação padrão ou lê a descrição de ajuda do item em foco. Pressionado simultaneamente com o botão Sul (Cruz / A): adiciona um bot à mesa (B). Quando combinado com R3: consulta pontuações ou alterna entre espectador e jogador na sala de espera (F3).
-* **Botão Norte / Superior (Triângulo no PlayStation / Y no Xbox / X no Switch / Botão 3 em genéricos):** Tab: alterna entre campos de texto e painéis.
+* **Botão Oeste / Esquerdo (Quadrado no PlayStation / X no Xbox / Y no Switch / Botão 2 em genéricos):** Ação principal ou Espaço. Executa a ação padrão ou lê a descrição de ajuda do item em foco. Pressionado simultaneamente com o botão Sul (Cruz / A): adiciona um bot à mesa (B). Segurar por 0,5 segundos: consulta pontuações e classificações da partida (S). Quando combinado com R3: consulta pontuações ou alterna entre espectador e jogador na sala de espera (F3).
+* **Botão Norte / Superior (Triângulo no PlayStation / Y no Xbox / X no Switch / Botão 3 em genéricos):** Informações rápidas da mesa ou do jogo (I). Segurar por 0,5 segundos: verificação específica do jogo, como a cor ativa ou contagem de cartas (C).
 * **Direcional (D-Pad) e Alavanca Esquerda:** Navegam por menus, listas e posições no tabuleiro.
 * **Clique da Alavanca Esquerda (L3 / LS):** Lê o item em foco ou a mensagem ativa. Pressionado simultaneamente com R3 em uma mesa: salva a mesa (Ctrl + S).
 * **Options / Menu / Start / +:** Cancelar, voltar, fechar o menu atual ou abrir o menu de ações do jogo (equivalente ao Escape).
@@ -88,6 +88,7 @@ Pressionar e segurar o clique da alavanca direita (R3 / RS) funciona como a tecl
 * **L3 + R3 (clique simultâneo):** Salva a mesa atual (Ctrl + S).
 * **Cruz + Quadrado / Sul + Oeste (pressionamento simultâneo):** Adiciona um bot à mesa (B).
 * **Segurar Círculo / Leste (0.7 segundos):** Sai da mesa atual (Ctrl + Q).
+* **Segurar R3 + Deslizar no Touchpad:** Deslizar para cima/baixo ajusta o volume da música (F10 / F9), ou esquerda/direita ajusta o volume de ambiente (F7 / F8).
 * **R3 + L1 / LB / L:** Vai para o primeiro buffer de mensagens (Shift + `[`).
 * **R3 + R1 / RB / R:** Vai para o último buffer de mensagens (Shift + `]`).
 * **R3 + L2 / LT / ZL:** Vai para a mensagem mais antiga no buffer atual (Shift + `,`).
@@ -110,10 +111,10 @@ Controles com touchpad capacitivo suportam cliques físicos, toques leves e gest
 
 * **Clique Físico no Painel:** Abre a lista completa de usuários online com suas atividades (Shift + F2).
 * **Toque Leve (Tap):** Anuncia de quem é a vez ou o tempo restante (T).
-* **Deslizar 1 dedo para cima:** Lê o resumo de usuários online (F2).
-* **Deslizar 1 dedo para baixo:** Alterna modo espectador ou jogador na sala de espera, ou consulta pontuações na partida (F3).
-* **Deslizar 1 dedo para a esquerda:** Silencia ou ativa o som do buffer de mensagens atual (F4).
-* **Deslizar 1 dedo para a direita:** Silencia ou ativa o som do chat da mesa (F6).
+* **Deslizar para Cima:** Lê o resumo de usuários online (F2). Ao segurar R3: Aumenta o volume da música (F10).
+* **Deslizar para Baixo:** Alterna modo espectador ou jogador na sala de espera, ou consulta pontuações na partida (F3). Ao segurar R3: Diminui o volume da música (F9).
+* **Deslizar para a Esquerda:** Silencia ou ativa o som do buffer de mensagens atual (F4). Ao segurar R3: Diminui o volume dos sons ambientes (F7).
+* **Deslizar para a Direita:** Silencia ou ativa o som do chat da mesa (F6). Ao segurar R3: Aumenta o volume dos sons ambientes (F8).
 
 # **Controles Móveis**
 

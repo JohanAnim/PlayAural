@@ -57,8 +57,8 @@ PlayAural hỗ trợ đầy đủ các loại tay cầm tiêu chuẩn trên ứn
 
 \* \*\*Nút dưới / South (PlayStation X / Xbox A / Switch B / Nút 0 trên tay cầm chung):\*\* Xác nhận, kích hoạt mục đang chọn hoặc đánh lá bài/nước đi đã chọn (tương đương phím Enter).
 \* \*\*Nút phải / East (PlayStation O / Xbox B / Switch A / Nút 1 trên tay cầm chung):\*\* Hủy, quay lại, đóng menu hiện tại hoặc mở menu hành động trong ván chơi (tương đương phím Escape). Nhấn giữ nút này khi đang ở trong bàn sẽ rời bàn (Ctrl + Q).
-\* \*\*Nút trái / West (PlayStation Vuông / Xbox X / Switch Y / Nút 2 trên tay cầm chung):\*\* Hành động chính hoặc phím Space. Đánh nước mặc định hoặc đọc mô tả gợi ý của mục được chọn. Nhấn đồng thời với nút dưới (X / A): thêm bot vào bàn (B). Khi kết hợp cùng R3: xem điểm hoặc chuyển đổi giữa người chơi và khán giả trong phòng chờ (F3).
-\* \*\*Nút trên / North (PlayStation Tam giác / Xbox Y / Switch X / Nút 3 trên tay cầm chung):\*\* Phím Tab: chuyển đổi qua lại giữa các ô nhập liệu và khu vực chức năng.
+\* \*\*Nút trái / West (PlayStation Vuông / Xbox X / Switch Y / Nút 2 trên tay cầm chung):\*\* Hành động chính hoặc phím Space. Đánh nước mặc định hoặc đọc mô tả gợi ý của mục được chọn. Nhấn đồng thời với nút dưới (X / A): thêm bot vào bàn (B). Nhấn giữ 0,5 giây: xem bảng điểm và xếp hạng trong ván (S). Khi kết hợp cùng R3: xem điểm hoặc chuyển đổi giữa người chơi và khán giả trong phòng chờ (F3).
+\* \*\*Nút trên / North (PlayStation Tam giác / Xbox Y / Switch X / Nút 3 trên tay cầm chung):\*\* Thông tin nhanh về bàn hoặc ván chơi (I). Nhấn giữ 0,5 giây: kiểm tra trạng thái riêng của trò chơi như màu hiện tại hoặc số lá bài (C).
 \* \*\*Phím điều hướng (D-Pad) và cần gạt trái:\*\* Di chuyển trong menu, danh sách và vị trí ô cờ trên bàn.
 \* \*\*Nhấn cần gạt trái (L3 / LS):\*\* Đọc mục đang được chọn hoặc tin nhắn hiện tại. Nhấn đồng thời với R3 khi ở trong bàn: lưu bàn (Ctrl + S).
 \* \*\*Options / Menu / Start / +:\*\* Hủy, quay lại, đóng menu hiện tại hoặc mở menu hành động trong ván chơi (tương đương phím Escape).
@@ -88,6 +88,7 @@ Nhấn giữ nút cần gạt phải (R3 / RS) hoạt động giống như phím
 \* \*\*L3 + R3 (nhấn đồng thời):\*\* Lưu bàn chơi hiện tại (Ctrl + S).
 \* \*\*X + Vuông / South + West (nhấn đồng thời):\*\* Thêm bot vào bàn (B).
 \* \*\*Nhấn giữ nút O / East (0.7 giây):\*\* Rời khỏi bàn chơi hiện tại (Ctrl + Q).
+\* \*\*Nhấn giữ R3 + Vuốt trên bàn cảm ứng:\*\* Vuốt lên/xuống để điều chỉnh âm lượng nhạc nền (F10 / F9), hoặc trái/phải để điều chỉnh âm lượng môi trường (F7 / F8).
 \* \*\*R3 + L1 / LB / L:\*\* Nhảy tới bộ đệm đầu tiên (Shift + `[`).
 \* \*\*R3 + R1 / RB / R:\*\* Nhảy tới bộ đệm cuối cùng (Shift + `]`).
 \* \*\*R3 + L2 / LT / ZL:\*\* Nhảy tới tin nhắn cũ nhất trong bộ đệm hiện tại (Shift + `,`).
@@ -110,10 +111,10 @@ Tay cầm có bàn cảm ứng điện dung hỗ trợ bấm vật lý, chạm n
 
 \* \*\*Bấm vật lý vào bàn cảm ứng:\*\* Mở danh sách người dùng trực tuyến đầy đủ kèm hoạt động hiện tại (Shift + F2).
 \* \*\*Chạm nhẹ (Tap):\*\* Đọc lượt đi hiện tại của ai hoặc thời gian còn lại (T).
-\* \*\*Vuốt 1 ngón lên:\*\* Nghe tóm tắt người dùng trực tuyến (F2).
-\* \*\*Vuốt 1 ngón xuống:\*\* Chuyển đổi giữa khán giả và người chơi trong phòng chờ, hoặc xem điểm trong ván (F3).
-\* \*\*Vuốt 1 ngón sang trái:\*\* Tắt hoặc bật tiếng bộ đệm tin nhắn hiện tại (F4).
-\* \*\*Vuốt 1 ngón sang phải:\*\* Tắt hoặc bật tiếng trò chuyện trong bàn (F6).
+\* \*\*Vuốt lên:\*\* Nghe tóm tắt người dùng trực tuyến (F2). Khi nhấn giữ R3: Tăng âm lượng nhạc nền (F10).
+\* \*\*Vuốt xuống:\*\* Chuyển đổi giữa khán giả và người chơi trong phòng chờ, hoặc xem điểm trong ván (F3). Khi nhấn giữ R3: Giảm âm lượng nhạc nền (F9).
+\* \*\*Vuốt sang trái:\*\* Tắt hoặc bật tiếng bộ đệm tin nhắn hiện tại (F4). Khi nhấn giữ R3: Giảm âm lượng âm thanh môi trường (F7).
+\* \*\*Vuốt sang phải:\*\* Tắt hoặc bật tiếng trò chuyện trong bàn (F6). Khi nhấn giữ R3: Tăng âm lượng âm thanh môi trường (F8).
 
 \*\*Điều khiển trên di động\*\*
 

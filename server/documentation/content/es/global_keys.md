@@ -51,8 +51,8 @@ PlayAural es totalmente compatible con mandos estándar en el cliente de escrito
 
 \* \*\*Botón inferior / Sur (Cruz en PlayStation / A en Xbox / B en Switch / Botón 0 en genérico):\*\* Confirmar, activar el elemento enfocado o jugar la carta/ficha seleccionada (equivalente a Entrar).
 \* \*\*Botón derecho / Este (Círculo en PlayStation / B en Xbox / A en Switch / Botón 1 en genérico):\*\* Cancelar, retroceder, cerrar el menú actual o abrir el menú de acciones del juego (equivalente a Escape). Mantener presionado prolongadamente dentro de una mesa sale de la mesa (Ctrl + Q).
-\* \*\*Botón izquierdo / Oeste (Cuadrado en PlayStation / X en Xbox / Y en Switch / Botón 2 en genérico):\*\* Acción principal o Espacio. Juega la acción predeterminada o lee la descripción de ayuda de la opción enfocada. Pulsado simultáneamente con el botón Sur (Cruz / A): añade un bot a la mesa (B). Combinado con R3: consulta puntuaciones o alterna entre espectador y jugador en la sala de espera (F3).
-\* \*\*Botón superior / Norte (Triángulo en PlayStation / Y en Xbox / X en Switch / Botón 3 en genérico):\*\* Tabulador (Tab): cambia entre campos de texto y paneles.
+\* \*\*Botón izquierdo / Oeste (Cuadrado en PlayStation / X en Xbox / Y en Switch / Botón 2 en genérico):\*\* Acción principal o Espacio. Juega la acción predeterminada o lee la descripción de ayuda de la opción enfocada. Pulsado simultáneamente con el botón Sur (Cruz / A): añade un bot a la mesa (B). Mantener presionado 0.5 segundos: consulta puntuaciones y clasificación del juego (S). Combinado con R3: consulta puntuaciones o alterna entre espectador y jugador en la sala de espera (F3).
+\* \*\*Botón superior / Norte (Triángulo en PlayStation / Y en Xbox / X en Switch / Botón 3 en genérico):\*\* Estado rápido del juego o de la mesa (I). Mantener presionado 0.5 segundos: consulta específica del juego como el color activo o conteo de cartas (C).
 \* \*\*Cruceta (D-Pad) y Stick izquierdo:\*\* Navegan por menús, listas y posiciones de cuadrícula del tablero.
 \* \*\*Pulsación del Stick izquierdo (L3 / LS):\*\* Lee el elemento actual enfocado o el mensaje activo. Pulsado simultáneamente con R3 dentro de una mesa: guarda la mesa (Ctrl + S).
 \* \*\*Options / Menu / Start / +:\*\* Cancelar, retroceder, cerrar el menú actual o abrir el menú de acciones del juego (equivalente a Escape).
@@ -82,6 +82,7 @@ Mantener presionado el botón del stick derecho (R3 / RS) funciona como la tecla
 \* \*\*L3 + R3 (pulsación simultánea):\*\* Guarda la mesa actual (Ctrl + S).
 \* \*\*Cruz + Cuadrado / Sur + Oeste (pulsación simultánea):\*\* Añade un bot a la mesa (B).
 \* \*\*Mantener Círculo / Este (0.7 segundos):\*\* Sale de la mesa actual (Ctrl + Q).
+\* \*\*Mantener R3 + Deslizar en panel táctil:\*\* Deslizar arriba/abajo ajusta el volumen de la música (F10 / F9), o izquierda/derecha ajusta el volumen ambiental (F7 / F8).
 \* \*\*R3 + L1 / LB / L:\*\* Salta al primer búfer de mensajes (Shift + `[`).
 \* \*\*R3 + R1 / RB / R:\*\* Salta al último búfer de mensajes (Shift + `]`).
 \* \*\*R3 + L2 / LT / ZL:\*\* Salta al mensaje más antiguo del búfer actual (Shift + `,`).
@@ -104,10 +105,10 @@ Los mandos con panel táctil capacitivo admiten clics físicos, toques ligeros y
 
 \* \*\*Clic físico en el panel:\*\* Abre la lista completa de usuarios en línea con sus actividades (Shift + F2).
 \* \*\*Toque ligero (Tap):\*\* Anuncia de quién es el turno o el tiempo restante (T).
-\* \*\*Deslizar 1 dedo hacia arriba:\*\* Lee el resumen de usuarios en línea (F2).
-\* \*\*Deslizar 1 dedo hacia abajo:\*\* Alterna el modo espectador o jugador en la sala de espera, o consulta las puntuaciones en juego (F3).
-\* \*\*Deslizar 1 dedo a la izquierda:\*\* Silencia o reactiva el búfer de mensajes actual (F4).
-\* \*\*Deslizar 1 dedo a la derecha:\*\* Silencia o reactiva el chat de la mesa (F6).
+\* \*\*Deslizar hacia arriba:\*\* Lee el resumen de usuarios en línea (F2). Al mantener R3: Aumenta el volumen de la música (F10).
+\* \*\*Deslizar hacia abajo:\*\* Alterna el modo espectador o jugador en la sala de espera, o consulta las puntuaciones en juego (F3). Al mantener R3: Reduce el volumen de la música (F9).
+\* \*\*Deslizar a la izquierda:\*\* Silencia o reactiva el búfer de mensajes actual (F4). Al mantener R3: Reduce el volumen del sonido ambiental (F7).
+\* \*\*Deslizar a la derecha:\*\* Silencia o reactiva el chat de la mesa (F6). Al mantener R3: Aumenta el volumen del sonido ambiental (F8).
 
 \*\*Controles móviles\*\*
 

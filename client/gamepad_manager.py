@@ -332,7 +332,7 @@ class GamepadManager:
                 self._handle_axis_motion(axis, val, cid)
 
     def _handle_touch_down(self, event: Any) -> None:
-        """Handle finger touch down on touchpad, supporting single-touch gestures."""
+        """Handle finger touch down on touchpad."""
         cid = getattr(event, "instance_id", 0)
         finger = getattr(event, "finger", 0)
         if finger != 0:
@@ -340,7 +340,6 @@ class GamepadManager:
         x = float(getattr(event, "x", 0.0))
         y = float(getattr(event, "y", 0.0))
         now = time.monotonic()
-
         self._touch_data[cid] = {
             "start_x": x,
             "start_y": y,

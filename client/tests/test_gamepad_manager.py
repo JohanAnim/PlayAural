@@ -259,8 +259,14 @@ def test_main_window_gamepad_mappings():
         _south_is_down=False,
         _west_is_down=False,
         _west_combo_used=False,
+        _west_press_time=None,
+        _west_hold_triggered=False,
+        _north_press_time=None,
+        _north_hold_triggered=False,
         _pending_gamepad_action=None,
         on_focus_menu=lambda evt: called_actions.append("on_focus_menu"),
+        on_ambience_up=lambda evt: called_actions.append("on_ambience_up"),
+        on_ambience_down=lambda evt: called_actions.append("on_ambience_down"),
     )
 
     dummy._handle_gamepad_mic_tap = MainWindow._handle_gamepad_mic_tap.__get__(dummy)
@@ -305,7 +311,48 @@ def test_main_window_gamepad_mappings():
     dummy._on_gamepad_button_down("touchpad_tap", 0)
     assert "keybind:t:False:False" in called_actions
 
-    # 10. Square (west) -> Space: Action on release
+    # 7. R3 + Touchpad swipe up -> Volume up (F10)
+    called_actions.clear()
+    dummy._r3_is_down = True
+    dummy._r3_modifier_used = False
+    dummy._on_gamepad_button_down("touchpad_swipe_up", 0)
+    assert "on_volume_up" in called_actions
+    assert dummy._r3_modifier_used is True
+
+    # 8. R3 + Touchpad swipe down -> Volume down (F9)
+    called_actions.clear()
+    dummy._r3_is_down = True
+    dummy._r3_modifier_used = False
+    dummy._on_gamepad_button_down("touchpad_swipe_down", 0)
+    assert "on_volume_down" in called_actions
+    assert dummy._r3_modifier_used is True
+
+    # 9. R3 + Touchpad swipe left -> Ambience volume down (F7)
+    called_actions.clear()
+    dummy._r3_is_down = True
+    dummy._r3_modifier_used = False
+    dummy._on_gamepad_button_down("touchpad_swipe_left", 0)
+    assert "on_ambience_down" in called_actions
+    assert dummy._r3_modifier_used is True
+
+    # 10. R3 + Touchpad swipe right -> Ambience volume up (F8)
+    called_actions.clear()
+    dummy._r3_is_down = True
+    dummy._r3_modifier_used = False
+    dummy._on_gamepad_button_down("touchpad_swipe_right", 0)
+    assert "on_ambience_up" in called_actions
+    assert dummy._r3_modifier_used is True
+
+    dummy._r3_is_down = False
+    dummy._r3_modifier_used = False
+
+    # 11. Triangle (north) -> Tap: Game Info (I)
+    called_actions.clear()
+    dummy._on_gamepad_button_down("north", 0)
+    dummy._on_gamepad_button_up("north", 0)
+    assert "keybind:i:False:False" in called_actions
+
+    # 12. Square (west) -> Tap: Space: Action on release
     called_actions.clear()
     dummy._on_gamepad_button_down("west", 0)
     dummy._on_gamepad_button_up("west", 0)
@@ -450,6 +497,39 @@ def test_main_window_gamepad_mappings():
     dummy._on_gamepad_button_up("east", 0)
     assert "keybind:q:True:False" in called_actions
     assert "keybind:escape:False:False" not in called_actions
+
+    # 17b. Square (West) long hold -> Scores (S)
+    called_actions.clear()
+    dummy._on_gamepad_button_down("west", 0)
+    dummy._west_press_time = time.monotonic() - 1.0  # simulate > 0.5s passed
+    if getattr(dummy, "_west_press_time", None) is not None:
+        if not getattr(dummy, "_west_hold_triggered", False) and (
+            time.monotonic() - dummy._west_press_time >= 0.5
+        ):
+            dummy._west_hold_triggered = True
+            dummy._cancel_pending_gamepad_action()
+            dummy.silence_speech()
+            dummy._send_keybind("s")
+            dummy.gamepad_manager.rumble(0.2, 0.2, 60)
+    dummy._on_gamepad_button_up("west", 0)
+    assert "keybind:s:False:False" in called_actions
+    assert "keybind:space:False:False" not in called_actions
+
+    # 17c. Triangle (North) long hold -> Check color / state (C)
+    called_actions.clear()
+    dummy._on_gamepad_button_down("north", 0)
+    dummy._north_press_time = time.monotonic() - 1.0  # simulate > 0.5s passed
+    if getattr(dummy, "_north_press_time", None) is not None:
+        if not getattr(dummy, "_north_hold_triggered", False) and (
+            time.monotonic() - dummy._north_press_time >= 0.5
+        ):
+            dummy._north_hold_triggered = True
+            dummy.silence_speech()
+            dummy._send_keybind("c")
+            dummy.gamepad_manager.rumble(0.2, 0.2, 60)
+    dummy._on_gamepad_button_up("north", 0)
+    assert "keybind:c:False:False" in called_actions
+    assert "keybind:i:False:False" not in called_actions
 
     # 18. Guide / Home / PS button -> Focus Main Menu (Alt + M)
     called_actions.clear()

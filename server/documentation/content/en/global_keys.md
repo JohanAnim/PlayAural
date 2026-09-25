@@ -57,8 +57,8 @@ PlayAural supports standard game controllers on the desktop client, including Pl
 
 \* \*\*South Button (PlayStation Cross / Xbox A / Switch B / Generic Button 0):\*\* Confirm, activate the focused item, or play the selected card/tile (equivalent to Enter).
 \* \*\*East Button (PlayStation Circle / Xbox B / Switch A / Generic Button 1):\*\* Cancel, go back, close the current menu, or open the in-game action menu (equivalent to Escape). Holding this button for a long press while inside a table leaves the table (Ctrl + Q).
-\* \*\*West Button (PlayStation Square / Xbox X / Switch Y / Generic Button 2):\*\* Primary action or Space. Plays default action or reads menu hint descriptions. Pressed simultaneously with South (Cross / A): adds a bot to the table (B). When combined with R3: check scores in-game, or toggle spectator/player mode in the table lobby (F3).
-\* \*\*North Button (PlayStation Triangle / Xbox Y / Switch X / Generic Button 3):\*\* Tab: cycles between input fields and panels.
+\* \*\*West Button (PlayStation Square / Xbox X / Switch Y / Generic Button 2):\*\* Primary action or Space. Plays default action or reads menu hint descriptions. Pressed simultaneously with South (Cross / A): adds a bot to the table (B). Holding for 0.5 seconds: check scores and game standings (S). When combined with R3: check scores in-game, or toggle spectator/player mode in the table lobby (F3).
+\* \*\*North Button (PlayStation Triangle / Xbox Y / Switch X / Generic Button 3):\*\* Quick game or table status (I). Holding for 0.5 seconds: game-specific check such as active color or card count (C).
 \* \*\*D-Pad and Left Stick:\*\* Move through menus, lists, and game board directions.
 \* \*\*Left Stick Click (L3 / LS):\*\* Read the currently focused item or active message. Pressed simultaneously with R3 while in a table: saves the table (Ctrl + S).
 \* \*\*Options / Menu / Start / +:\*\* Cancel, go back, close the current menu, or open the in-game action menu (equivalent to Escape / Back).
@@ -88,6 +88,7 @@ Pressing and holding the Right Stick Click (R3 / RS) acts like a Shift key to ju
 \* \*\*L3 + R3 (simultaneous press):\*\* Save the current table (Ctrl + S).
 \* \*\*Cross + Square / South + West (simultaneous press):\*\* Add a bot to the table (B).
 \* \*\*Hold Circle / East (0.7-second hold):\*\* Leave the current table (Ctrl + Q).
+\* \*\*Hold R3 + Touchpad Swipes:\*\* Swipe Up/Down to adjust music volume (F10 / F9), or Left/Right to adjust ambience volume (F7 / F8).
 \* \*\*R3 + Left Bumper (L1 / LB / L):\*\* Jump to the first message buffer (Shift + `[`).
 \* \*\*R3 + Right Bumper (R1 / RB / R):\*\* Jump to the last message buffer (Shift + `]`).
 \* \*\*R3 + Left Trigger (L2 / LT / ZL):\*\* Jump to the oldest message in the current buffer (Shift + `,`).
@@ -110,10 +111,10 @@ Controllers with a capacitive touchpad support physical clicks, taps, and swipe 
 
 \* \*\*Physical Click:\*\* Open the complete online users list with current activities (Shift + F2).
 \* \*\*Tap:\*\* Announce whose turn it is or time remaining (T).
-\* \*\*1-Finger Swipe Up:\*\* Read online users summary (F2).
-\* \*\*1-Finger Swipe Down:\*\* Toggle spectator/player mode in lobby, or check scores in-game (F3).
-\* \*\*1-Finger Swipe Left:\*\* Mute or unmute the current message buffer (F4).
-\* \*\*1-Finger Swipe Right:\*\* Mute or unmute table chat (F6).
+\* \*\*Swipe Up:\*\* Read online users summary (F2). When holding R3: Increase music volume (F10).
+\* \*\*Swipe Down:\*\* Toggle spectator/player mode in lobby, or check scores in-game (F3). When holding R3: Decrease music volume (F9).
+\* \*\*Swipe Left:\*\* Mute or unmute the current message buffer (F4). When holding R3: Decrease ambience volume (F7).
+\* \*\*Swipe Right:\*\* Mute or unmute table chat (F6). When holding R3: Increase ambience volume (F8).
 
 \*\*Mobile Controls\*\*
 
