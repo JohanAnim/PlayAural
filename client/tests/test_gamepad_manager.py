@@ -166,34 +166,6 @@ def test_touchpad_gestures_and_tap():
     gm._handle_touch_motion(MagicMock(finger=0, instance_id=1, x=0.7, y=0.5))
     assert "touchpad_swipe_right" in downs
 
-    # 6. Two-finger Swipe Up (Music volume up): fingers 0 and 1 down, move up
-    downs.clear()
-    gm._handle_touch_down(MagicMock(finger=0, instance_id=1, x=0.4, y=0.8))
-    gm._handle_touch_down(MagicMock(finger=1, instance_id=1, x=0.6, y=0.8))
-    gm._handle_touch_motion(MagicMock(finger=0, instance_id=1, x=0.4, y=0.4))
-    assert "touchpad_2finger_swipe_up" in downs
-
-    # 7. Two-finger Swipe Down (Music volume down): fingers 0 and 1 down, move down
-    downs.clear()
-    gm._handle_touch_down(MagicMock(finger=0, instance_id=1, x=0.4, y=0.2))
-    gm._handle_touch_down(MagicMock(finger=1, instance_id=1, x=0.6, y=0.2))
-    gm._handle_touch_motion(MagicMock(finger=0, instance_id=1, x=0.4, y=0.6))
-    assert "touchpad_2finger_swipe_down" in downs
-
-    # 8. Two-finger Swipe Left (Alt+P): fingers 0 and 1 down, move left
-    downs.clear()
-    gm._handle_touch_down(MagicMock(finger=0, instance_id=1, x=0.8, y=0.5))
-    gm._handle_touch_down(MagicMock(finger=1, instance_id=1, x=0.8, y=0.7))
-    gm._handle_touch_motion(MagicMock(finger=0, instance_id=1, x=0.4, y=0.5))
-    assert "touchpad_2finger_swipe_left" in downs
-
-    # 9. Two-finger Swipe Right (Shift+F6): fingers 0 and 1 down, move right
-    downs.clear()
-    gm._handle_touch_down(MagicMock(finger=0, instance_id=1, x=0.2, y=0.5))
-    gm._handle_touch_down(MagicMock(finger=1, instance_id=1, x=0.2, y=0.7))
-    gm._handle_touch_motion(MagicMock(finger=0, instance_id=1, x=0.6, y=0.5))
-    assert "touchpad_2finger_swipe_right" in downs
-
 
 def test_main_window_has_gamepad_integration():
     """Verify MainWindow source contains gamepad initialization, handlers, speech silence, and cleanup."""
@@ -328,26 +300,7 @@ def test_main_window_gamepad_mappings():
     dummy._on_gamepad_button_down("touchpad_swipe_right", 0)
     assert "on_toggle_table_chat" in called_actions
 
-    # 6. Touchpad 2-finger swipe right -> Shift+F6: Mute global chat
-    called_actions.clear()
-    dummy._on_gamepad_button_down("touchpad_2finger_swipe_right", 0)
-    assert "on_toggle_global_chat" in called_actions
-
-    # 7. Touchpad 2-finger swipe left -> Alt+P: Ping latency
-    called_actions.clear()
-    dummy._on_gamepad_button_down("touchpad_2finger_swipe_left", 0)
-    assert "on_ping" in called_actions
-
-    # 8. Touchpad 2-finger swipe up/down -> F10 / F9: Music volume
-    called_actions.clear()
-    dummy._on_gamepad_button_down("touchpad_2finger_swipe_up", 0)
-    assert "on_volume_up" in called_actions
-
-    called_actions.clear()
-    dummy._on_gamepad_button_down("touchpad_2finger_swipe_down", 0)
-    assert "on_volume_down" in called_actions
-
-    # 9. Touchpad tap -> Whose turn / Table status ("t")
+    # 6. Touchpad tap -> Whose turn / Table status ("t")
     called_actions.clear()
     dummy._on_gamepad_button_down("touchpad_tap", 0)
     assert "keybind:t:False:False" in called_actions
@@ -562,6 +515,16 @@ def test_main_window_gamepad_mappings():
     dummy._on_gamepad_button_up("west", 0)
     assert "keybind:space:False:False" in called_actions
     assert "keybind:b:False:False" not in called_actions
+
+    # 26. West (Square) + R3 combo (West first, then R3) -> F3
+    called_actions.clear()
+    dummy._on_gamepad_button_down("west", 0)
+    dummy._on_gamepad_button_down("right_stick", 0)
+    dummy._on_gamepad_button_up("west", 0)
+    dummy._on_gamepad_button_up("right_stick", 0)
+    assert "keybind:f3:False:False" in called_actions
+    assert "keybind:space:False:False" not in called_actions
+
 
 
 def test_game_audio_haptic_vibration_triggers():

@@ -375,6 +375,16 @@ async def test_audio_submenu_to_audio_input_device_and_back(tmp_path) -> None:
         await server._handle_audio_input_device_selection(user, "back")
         assert _current_menu(server, user.username) == "options_audio_submenu"
 
+        # Selecting an input device returns to audio options
+        server._audio_input_devices_by_user[user.username] = [
+            {"id": "mic-1", "name": "USB Microphone"}
+        ]
+        await server._handle_audio_submenu_selection(user, "audio_input_device")
+        assert _current_menu(server, user.username) == "audio_input_device_menu"
+        await server._handle_audio_input_device_selection(user, "audio_input_device::mic-1")
+        assert user.preferences.desktop_audio_input_device_id == "mic-1"
+        assert _current_menu(server, user.username) == "options_audio_submenu"
+
         await server._handle_audio_submenu_selection(user, "back")
         assert _current_menu(server, user.username) == "options_menu"
     finally:
@@ -1216,8 +1226,8 @@ async def test_gamepad_device_and_strength_selection(tmp_path) -> None:
     server, user = _make_server(tmp_path)
     try:
         server._gamepad_devices_by_user[user.username] = [
-            {"id": "0", "name": "PS5 DualSense Controller"},
-            {"id": "1", "name": "Xbox Wireless Controller"},
+            {"id": "030000004c050000e60c000011810000", "name": "PS5 DualSense Controller"},
+            {"id": "030000005e040000120b000009050000", "name": "Xbox Wireless Controller"},
         ]
         synced_prefs = []
         server._sync_pref_to_client = lambda u, k, v: synced_prefs.append((k, v))
@@ -1227,17 +1237,33 @@ async def test_gamepad_device_and_strength_selection(tmp_path) -> None:
         assert _current_menu(server, user.username) == "gamepad_device_menu"
         assert _menu_ids(user, "gamepad_device_menu") == [
             "gamepad_device_auto",
-            "gamepad_device::0",
-            "gamepad_device::1",
+            "gamepad_device::030000004c050000e60c000011810000",
+            "gamepad_device::030000005e040000120b000009050000",
             "back",
         ]
 
-        # Select DualSense
-        await server._handle_gamepad_device_selection(user, "gamepad_device::0")
-        assert user.preferences.desktop_gamepad_device_id == "0"
+        # Select DualSense with stable GUID
+        await server._handle_gamepad_device_selection(
+            user, "gamepad_device::030000004c050000e60c000011810000"
+        )
+        assert (
+            user.preferences.desktop_gamepad_device_id
+            == "030000004c050000e60c000011810000"
+        )
         assert user.preferences.desktop_gamepad_device_name == "PS5 DualSense Controller"
-        assert ("interface/gamepad_device_id", "0") in synced_prefs
+        assert (
+            "interface/gamepad_device_id",
+            "030000004c050000e60c000011810000",
+        ) in synced_prefs
         assert ("interface/gamepad_device_name", "PS5 DualSense Controller") in synced_prefs
+
+        # Ensure stable device identity persists across temporary disconnection
+        server._gamepad_devices_by_user[user.username] = []
+        server._sync_desktop_gamepad_device_fallback(user)
+        assert (
+            user.preferences.desktop_gamepad_device_id
+            == "030000004c050000e60c000011810000"
+        )
 
         # Select auto
         await server._handle_gamepad_device_selection(user, "gamepad_device_auto")

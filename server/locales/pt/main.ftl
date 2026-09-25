@@ -295,6 +295,7 @@ general-desc-speech-rate = Altere a velocidade da fala do cliente web.
 general-desc-speech-voice = Escolha a voz usada pela API Web Speech do cliente web ou retorne ao padrão do navegador.
 general-desc-mobile-tts-engine = Escolha o motor de texto para fala móvel. Atualmente, o Android usa o motor gerenciado pelo sistema.
 general-desc-mobile-tts-voice = Escolha a voz de texto para fala móvel ou retorne ao padrão do sistema.
+general-desc-mobile-tts-rate = Altere a velocidade de texto para fala no celular.
 general-desc-client-options = Abre as preferências locais do cliente, incluindo configuração do comando, vibração e opções da área de trabalho.
 general-desc-gamepad-options = Escolha o controle ativo, ative ou desative a vibração e ajuste a intensidade da vibração.
 general-desc-gamepad-device = Escolha qual controle conectado recebe as entradas e o feedback tátil.

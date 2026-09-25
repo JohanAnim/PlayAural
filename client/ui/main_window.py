@@ -624,6 +624,14 @@ class MainWindow(wx.Frame):
                 self._send_keybind("s", has_control=True)
                 self.gamepad_manager.rumble(0.25, 0.25, 60)
                 return
+            if getattr(self, "_west_is_down", False):
+                self._r3_modifier_used = True
+                self._west_combo_used = True
+                self._cancel_pending_gamepad_action()
+                self.silence_speech()
+                self._send_keybind("f3")
+                self.gamepad_manager.rumble(0.15, 0.15, 45)
+                return
             return
 
         # Track microphone button (misc1) press vs hold
@@ -805,24 +813,6 @@ class MainWindow(wx.Frame):
             self.silence_speech()
             self.on_toggle_table_chat(wx.CommandEvent())
             self.gamepad_manager.rumble(0.15, 0.15, 45)
-
-        elif btn_name == "touchpad_2finger_swipe_right":  # 2-finger Swipe Right -> Shift + F6: Toggle global chat mute
-            self.silence_speech()
-            self.on_toggle_global_chat(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.2, 0.2, 50)
-
-        elif btn_name == "touchpad_2finger_swipe_left":  # 2-finger Swipe Left -> Alt + P: Ping latency
-            self.silence_speech()
-            self.on_ping(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.15, 0.15, 45)
-
-        elif btn_name == "touchpad_2finger_swipe_up":  # 2-finger Swipe Up -> F10: Music volume up
-            self.on_volume_up(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.1, 0.1, 35)
-
-        elif btn_name == "touchpad_2finger_swipe_down":  # 2-finger Swipe Down -> F9: Music volume down
-            self.on_volume_down(wx.CommandEvent())
-            self.gamepad_manager.rumble(0.1, 0.1, 35)
 
         elif btn_name == "touchpad_tap":  # Soft tap -> Whose turn / Table status ("t")
             self.silence_speech()

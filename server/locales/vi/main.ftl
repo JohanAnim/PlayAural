@@ -295,6 +295,7 @@ general-desc-speech-rate = Thay đổi tốc độ đọc của máy khách web.
 general-desc-speech-voice = Chọn giọng đọc dùng cho Web Speech API của máy khách web, hoặc quay về giọng mặc định của trình duyệt.
 general-desc-mobile-tts-engine = Chọn bộ máy đọc trên di động. Android hiện dùng bộ máy do hệ thống quản lý.
 general-desc-mobile-tts-voice = Chọn giọng đọc trên di động, hoặc quay về giọng mặc định của hệ thống.
+general-desc-mobile-tts-rate = Thay đổi tốc độ đọc trên di động.
 general-desc-client-options = Mở cài đặt phía ứng dụng bao gồm thiết lập tay cầm, độ rung và các tùy chọn cục bộ trên máy tính.
 general-desc-gamepad-options = Chọn tay cầm đang hoạt động, bật hoặc tắt rung và điều chỉnh độ rung.
 general-desc-gamepad-device = Chọn tay cầm nào được kết nối sẽ nhận tín hiệu điều khiển và phản hồi xúc giác.

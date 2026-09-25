@@ -4353,7 +4353,6 @@ PlayAural Server
             return
         match = self._find_gamepad_device_for_user(user.username, current_id)
         if not match:
-            self._set_desktop_gamepad_device_preference(user, "", "")
             return
         if current_name != match.get("name", ""):
             self._set_desktop_gamepad_device_preference(
@@ -7734,6 +7733,7 @@ PlayAural Server
                     user, device["id"], device["name"]
                 )
                 self._nav_back(user)
+                return
         self._nav_refresh(user, self._show_audio_input_device_menu)
 
     async def _handle_gamepad_options_selection(
